@@ -86,7 +86,7 @@ h3 {
 
 header {
     background: linear-gradient( rgb(207, 62, 33), rgba(141, 40, 20, 0.9)),
-    url(img/download.jpg);
+    url(img/coding-wallpaper.jpg);
     background-size: cover;
     background-position: center top;
     width: 100%;
@@ -135,7 +135,7 @@ header {
     font-style: normal;
     font-weight: 300;
     line-height: 1.8;
-    color: #616569;
+    color: white;
     letter-spacing: .03em;
     margin: 10px auto;
     font-size: 1.5em;
@@ -143,7 +143,7 @@ header {
 }
 
 .about p a {
-    color: #E1CCC9;
+    color: white;
     border-bottom: 2px solid;
 }
 
@@ -209,7 +209,7 @@ header {
 
 .contact {
     width: 100%;
-    background-color: #011833;
+    background-color: #1a1c1d;
     padding: 5% 0;
     margin-top: 5%;
     clear: both;
@@ -230,7 +230,7 @@ header {
 }
 
 .contact-content a {
-    color: #E0CCC8;
+    color: #8F1F08;
     text-decoration: none;
 }
 
@@ -285,6 +285,11 @@ footer {
 
 .social li a:hover {
     color: #011833;
+}
+
+.LinkImages{
+    width: 32px;
+    height: 32px;
 }
 
 @media only screen and (max-width:1000px) {

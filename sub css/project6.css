@@ -1,0 +1,146 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: "";
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+body {
+    background-color: #232525;
+}
+a {
+    -o-transition: .5s;
+    -ms-transition: .5s;
+    -moz-transition: .5s;
+    -webkit-transition: .5s;
+    transition: .5s;
+    text-decoration: none;
+}
+
+em {
+    font-style: oblique;
+}
+
+strong {
+    font-style: bold;
+}
+
+img {
+    width: 100%;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: proxima-nova, sans-serif;
+    font-style: normal;
+}
+
+h3 {
+    text-transform: capitalize;
+    font-size: 1.875em;
+    padding: 0 0 1% 0;
+    color: #8f1f08;
+    font-weight: 800;
+}
+
+header {
+    background: linear-gradient( rgb(207, 62, 33), rgba(141, 40, 20, 0.9)),
+    url(../img/coding-wallpaper.jpg);
+    background-size: cover;
+    background-position: center top;
+    width: 100%;
+}
+
+.intro {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 8% 0;
+}
+
+.intro h1 {
+    font-size: 6em;
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 800;
+    line-height: 1.5em;
+}
+
+.intro h2 {
+    font-size: 2em;
+    text-align: center;
+    color: #fff;
+    font-weight: 300;
+    text-transform: capitalize;
+    letter-spacing: 0.09em;
+}
+
+.img-area{
+    width: 720px;
+    height: 405px;
+    overflow: hidden;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+.text-box {
+    text-align: left;
+    width: 720px;
+    background-color:#1A1C1D;
+    height: 100%; 
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+.text-box-content {
+    padding: 4% 8%;
+}
+
+.text-box-content p {
+    line-height: 1.8;
+    color: #c7daec;
+    letter-spacing: .03em;
+    font-size: 1em;
+}
