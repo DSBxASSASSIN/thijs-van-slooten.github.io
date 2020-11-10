@@ -80,6 +80,14 @@ body {
 	max-width: 300px;
 }
 
+/* button {
+	width: 100px;
+	height: 100px;
+	color: #cf3e21;
+	background-color: black;
+	border: #000;
+} */
+
 
 .sketch-holder {
 	min-width: 300px;
@@ -87,6 +95,10 @@ body {
 	max-width: 600px;
 	max-height: 600px;
 	background: #000;
+}
+
+canvas {
+	background-color: rgb(68, 67, 67);
 }
 
 .container {
