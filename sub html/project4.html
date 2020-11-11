@@ -1,74 +1,75 @@
-<DOCTYPE html>
-    <html lang="en">
-        <head>
-            <meta charset="utf-8">
-            <meta name="author" content="thijs van slooten">
-            <meta neme="viewport" content="width=device-width, initial-scale=1">
-            <link rel="stylesheet" type="text/css" media="screen" href="../sub css/project4.css">
-            <script src="../sub js/p5.js"></script>
-            <script src="../sub js/raycast.js"></script>
-            <title>project 3D</title>
-        </head>
-        <body>
-            <header>
-                <div class="intro">
-                    <h1>Thijs van Slooten</h1>
-                    <h2>Game Programmer</h2>
-                </div>
-            </header>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="author" content="thijs van slooten" />
+        <meta neme="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" type="text/css" media="screen" href="../sub css/project4.css" />
+        <script src="../sub js/raycast/p5.js"></script>
+        <script src="../sub js/raycast/raycast.js"></script>
+        <title>project 3D</title>
+    </head>
+    <body>
+        <header class="header">
+            <h1 class="header__title">Project 3D</h1>
+            <!-- <h2 class="header__subtitle">Game Programmer</h2> -->
+        </header>
 
-            <div class="Game-holder">
+        <div class="wrapper">
+            <div class="game">
                 <div id="sketch-holder"></div>
-                <div class="controler">
-                    <img src="../img/wasd.png" alt="w a s d picture">
-                    <p> 
-                        Use W: to walk forward <br> 
-                        Use A: to turn left <br>
-                        Use S: to walk backwards <br>
-                        Use D: to turn right <br>
-                    </p>
+                <div class="game__body">
+                    <img class="game__img" src="../img/wasd.png" alt="w a s d picture" />
+                    <div class="game__controls">
+                        <span>Use W: to walk forward</span>
+                        <span>Use A: to turn left</span>
+                        <span>Use S: to walk backwards</span>
+                        <span>Use D: to turn right</span>
+                    </div>
                 </div>
             </div>
 
-            <div class="text-box">
-                <div class="text-box-content">
-                    <h3>Project 3D</h3>
-                    <p>
-                        This is my project to recreate the rendering of the clasic Wolfenstein3D. <br>
-                        I created this live demo above with the P5.js library and the open source code of the Wolfenstein3D that is available on github.
-                        I was very interested how to render 3D games without a 3D engine so i started to wonder how to make a simple 3D rendering.
-                        In my research i found out about raytracing and how it could be used for graphics for games like Wolfenstein3D, 
-                        So i decided to use raytracing to make a 3D(ish) render. <br> <br> <br>
-                    </p>
-                    
-                    <p>
-                        The picture to the left shows some of my code for the map / rendering for the minimap.
-                        Its a class with a 2 dimentional array with values between 0 and 3, 0 meaning a open space where you can walk and 1 for a red wall 2 for green wall and 3 for blue wall.
-                        The render option for the map just loops over every object in the 2d array and looks at their place in the array to place them on the screen with the size of the minimap multiplier.
-                        <br> <br> <br>
-                    </p>
-                    
-                    <p>
-                        In the snipped below my 3D wall is being.
-                        First we loop over all the rays we send from the player afther we looped over all the rays we,
-                        calulate the distance to the wall so we get the correct distance with the projection screen with that we calculate the height of the wall.
-                        With the height of wall and the angle of the ray we can start to draw the wall part.
-                        Then we take the color of the map 2D array and use that color for the wall.
-                    </p>
-
-                </div>
+            <div class="container">
+                <h3 class="container__title">Project 3D</h3>
+                <p class="container__paragraph">
+                    This is my project to recreate the rendering of the clasic Wolfenstein3D. <br />
+                    I created this live demo above with the P5.js library and the open source code of the Wolfenstein3D
+                    that is available on github. I was very interested how to render 3D games without a 3D engine so i
+                    started to wonder how to make a simple 3D rendering. In my research i found out about raytracing and
+                    how it could be used for graphics for games like Wolfenstein3D, So i decided to use raytracing to
+                    make a 3D(ish) render.
+                </p>
+                <p class="container__paragraph">
+                    The picture to the left shows some of my code for the map / rendering for the minimap. Its a class
+                    with a 2 dimentional array with values between 0 and 3, 0 meaning a open space where you can walk
+                    and 1 for a red wall 2 for green wall and 3 for blue wall. The render option for the map just loops
+                    over every object in the 2d array and looks at their place in the array to place them on the screen
+                    with the size of the minimap multiplier.
+                </p>
+                <p class="container__paragraph">
+                    In the snipped below my 3D wall is being. First we loop over all the rays we send from the player
+                    afhter we looped over all the rays we, calulate the distance to the wall so we get the correct
+                    distance with the projection screen with that we calculate the height of the wall. With the height
+                    of wall and the angle of the ray we can start to draw the wall part. Then we take the color of the
+                    map 2D array and use that color for the wall.
+                </p>
             </div>
 
-            <img src="../img/3Dmap-snipped.png" alt="3Dmap-snipped" id="map-snipped">
+            <div class="img-container">
+                <img class="img" src="../img/3Dmap-snipped.png" alt="3Dmap-snipped" id="map-snipped" />
+                <img class="img" src="../img/3DWall-snipped.png" alt="3DWall-snipped" id="Wall-snipped" />
+            </div>
+        </div>
 
-            <img src="../img/3DWall-snipped.png" alt="3DWall-snipped" id="Wall-snipped">
-
-            <footer>
-                <div class="footer-content">
-                    <ul class="social">
-                        <li><a target="_blank" href="https://github.com/DSBxASSASSIN/raycast/tree/master/raycast_js">github of this project <img class="LinkImages" src="../img/GitHub-Mark-Light-32px.png" alt="github image"></a></li>
-                    </ul>
-                </div>
-            </footer>
-        </body>
+        <footer class="footer">
+            <a
+                class="footer__link"
+                target="_blank"
+                href="https://github.com/DSBxASSASSIN/raycast/tree/master/raycast_js"
+            >
+                <img class="LinkImages" src="../img/GitHub-Mark-Light-32px.png" alt="github image" />
+                GitHub
+            </a>
+        </footer>
+    </body>
 </html>

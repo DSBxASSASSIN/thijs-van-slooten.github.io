@@ -292,6 +292,11 @@ footer {
     height: 32px;
 }
 
+.detail__body{
+    color: #8f1f08;
+    font-size: 20px;
+}
+
 @media only screen and (max-width:1000px) {
     .wrapper {
       padding: 0% 4%;
