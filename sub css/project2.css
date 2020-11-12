@@ -171,3 +171,18 @@ canvas {
 .footer__link:hover img {
 	opacity: 1;
 }
+
+.detail__body{
+	list-style: none;
+}
+
+.detail__body li{
+    color: #8f1f08;
+    font-size: 20px;
+}
+
+.detail__body li a{
+	color: #8f1f08;
+	text-decoration: none;
+    font-size: 20px;
+}
