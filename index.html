@@ -1,161 +1,826 @@
-<DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-	<meta charset="utf-8">
-	<meta name="author" content="thijs van slooten">
-	<meta neme="viewport" content="width=device-width, initial-scale=1">
-	<title>Thijs Van Slooten</title>
-	<link rel="stylesheet" type="text/css" media="screen" href="main.css">
-    </head>
-    <body>
-		<header>
-			<div class="intro">
-				<h1>Thijs van Slooten</h1>
-				<h2>Game Programmer</h2>
-				<!--<h2>Game Developer</h2> -->
-			</div>
-		</header>
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Thijs van Slooten">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Thijs van Slooten</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@300;400;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg:        #0a0c0f;
+            --bg2:       #0f1318;
+            --bg3:       #141920;
+            --panel:     #111620;
+            --border:    #1e2d40;
+            --accent:    #00d4ff;
+            --accent2:   #00ff9d;
+            --accent3:   #ff6b35;
+            --text:      #c8d8e8;
+            --text-dim:  #5a7a8a;
+            --text-faint:#2a3a4a;
+            --glow:      0 0 20px rgba(0,212,255,0.3);
+            --glow2:     0 0 20px rgba(0,255,157,0.3);
+        }
 
-		<div class="wrapper">
-			<section class="about">
-				<div class="about-content">
-					<h3>Hi, I'm Thijs.</h3>
-					<p>I am 19 years old, i love to find out how things work and how they are made.<br> And of all of the things that interested me games where always on the first spot.<br> So i started to learn programming and noticed how much i loved it</p>
-					<!-- <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." krijg ik nu een lolie</p> -->
-				</div>
-			</section>
-		
-		<h3>my work,</h3>
-		<section class="work">
-			<div class="image-area left">
-				<img src="img/mythe.png" alt="Project Mythe" height="300px">
-			</div>
-			<div class="text-box">
-				<div class="text-box-content">
-					<h3>Mythe</h3>
-					<p>
-						My third big project that i needed to make was a game based on a myth, So we as an group had decided to make a game about the myth of Atlantis
-						<ul class="detail__body">
-							<li>Unity</li>
-							<li>C#</li>
-						</ul>
-					</p>
-					<a href="sub html/project1.html"  class="button">view project</a>     <!---target="_blank"--->
-				</div>
-			</div>
-		</section>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-		<section class="work">
-			<div class="image-area right">
-				<img src="img/VecticalSlice.png" alt="Project Vectical Slice" height="300px">
-			</div>
-			<div class="text-box">
-				<div class="text-box-content">
-					<h3>Vectical Slice</h3>
-					<p>
-						My second big project that i needed to make was to copy a game as good as we could from a video of a few seconds. So we recreated Rayman 3D
-						<ul class="detail__body">
-							<li>Unity</li>
-							<li>C#</li>
-						</ul>
-					</p>
-					<a href="sub html/project2.html"  class="button">view project</a>     <!---target="_blank"--->
-				</div>
-			</div>
-		</section>
+        html { scroll-behavior: smooth; }
 
-		<section class="work">
-			<div class="image-area left">
-				<img src="img/ProjectSpace.png" alt="Project Space Image" height="300px">
-			</div>
-			<div class="text-box">
-				<div class="text-box-content">
-					<h3>Project Space</h3>
-					<p>
-						My first big project that i needed to make was a game with as theme "Space", so we made a "metroid venia" like game.
-						<ul class="detail__body">
-							<li>Unity</li>
-							<li>C#</li>
-						</ul>
-					</p>
-					<a href="sub html/project3.html"  class="button">view project</a>     <!---target="_blank"--->
-				</div>
-			</div>
-		</section>
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-		<section class="work">
-			<div class="image-area right">
-				<img src="img/Wolfenstein3D.png" alt="TEMP ALT">
-			</div>
-			<div class="text-box">
-				<div class="text-box-content">
-					<h3>Project 3D</h3>
-					<p>
-						this is my first attempt at recreating wolfenstein 3D's rendering in javascript.
-						<ul class="detail__body">
-							<li>Javascript</li>
-							<li>P5.js</li>
-						</ul>
-					</p>
-					<a href="sub html/project4.html"  class="button">view project</a>     <!---target="_blank"--->
-				</div>
-			</div>
-		</section>
+        /* ── SCANLINE OVERLAY ── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0,0,0,0.03) 2px,
+                rgba(0,0,0,0.03) 4px
+            );
+            pointer-events: none;
+            z-index: 9999;
+        }
 
-		<section class="work">
-			<div class="image-area left">
-				<img src="img/VerletPhysicsEngine.png" alt="TEMP ALT">
-			</div>
-			<div class="text-box">
-				<div class="text-box-content">
-					<h3>Verlet Physics Engine</h3>
-					<p>
-						this is my first attempt at making a Verlet Physics Engine, that i got interested in afther getting more and more lessons on how to inplement physics with code in javascript
-						<ul class="detail__body">
-							<li>Javascript</li>
-						</ul>
-					</p>
-					<a href="sub html/project5.html"  class="button">view project</a>     <!---target="_blank"--->
-				</div>
-			</div>
-		</section>
+        /* ── NOISE TEXTURE ── */
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9998;
+            opacity: 0.4;
+        }
 
-		<section class="work">
-			<div class="image-area right">
-				<img src="img/minecraft_clone_tn.png" alt="TEMP ALT" height="300px">
-			</div>
-			<div class="text-box">
-				<div class="text-box-content">
-					<h3>Minecraft Clone</h3>
-					<p>
-						I wanted to create a minecraft clone for a time now. so i could learn how it was created. 
-						Do keep in mind this project is stil under development.
-						<ul class="detail__body">
-							<li>Unity</li>
-							<li>C#</li>
-						</ul>
-					</p>
-					<a href="sub html/project6.html"  class="button">view project</a>
-				</div>
-			</div>
-		</section>
-		</div>
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10,12,15,0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
 
-		<section class="contact">
-			<div class="contact-content">
-				<h4>have a project in mind? email me: <a class="email" href="mailto:thijsvsl@gmail.com">thijsvsl@gmail.com</a></h4>
-				<h4>or call me: <a class="email" href="tel:0615102000">0615102000</a></h4>
-			</div>
-		</section>
-		<div class="image-divider">
-		</div>
+        .nav-logo {
+            font-family: 'Share Tech Mono', monospace;
+            color: var(--accent);
+            font-size: 0.85rem;
+            letter-spacing: 0.15em;
+            text-shadow: var(--glow);
+        }
 
-		<footer>
-			<div class="footer-content">
-				<ul class="social">
-					<li><a target="_blank" href="https://www.linkedin.com/in/thijs-van-slooten-682049185/">linkedin <img class="LinkImages" src="img/LI-In-Bug.png" alt="linkedin link image"></a></li>
-					<li><a target="_blank" href="https://github.com/DSBxASSASSIN">Github <img class="LinkImages" src="img/GitHub-Mark-light-32px.png" alt="github link image"></a></li>
-				</ul>
-		</footer>
-    </body>
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            text-decoration: none;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            transition: color 0.2s, text-shadow 0.2s;
+        }
+        .nav-links a:hover { color: var(--accent); text-shadow: var(--glow); }
+
+        /* ── HERO ── */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 6rem 2rem 4rem;
+        }
+
+        /* grid background */
+        #hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(var(--border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 60px 60px;
+            opacity: 0.25;
+        }
+
+        /* glowing orb */
+        #hero::after {
+            content: '';
+            position: absolute;
+            top: 20%; left: 50%;
+            transform: translateX(-50%);
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(0,212,255,0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            text-align: center;
+            max-width: 900px;
+        }
+
+        .hero-tag {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--accent);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeUp 0.6s 0.3s forwards;
+        }
+
+        .hero-name {
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            font-size: clamp(3rem, 10vw, 8rem);
+            line-height: 0.95;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+            color: #fff;
+            opacity: 0;
+            animation: fadeUp 0.7s 0.5s forwards;
+        }
+
+        .hero-name span {
+            display: block;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(0,212,255,0.5);
+        }
+
+        .hero-subtitle {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: clamp(0.85rem, 2vw, 1.1rem);
+            color: var(--accent2);
+            letter-spacing: 0.2em;
+            margin-top: 1.5rem;
+            text-shadow: var(--glow2);
+            opacity: 0;
+            animation: fadeUp 0.7s 0.8s forwards;
+        }
+
+        .hero-desc {
+            max-width: 520px;
+            margin: 2rem auto 0;
+            color: var(--text-dim);
+            font-size: 1.1rem;
+            line-height: 1.7;
+            opacity: 0;
+            animation: fadeUp 0.7s 1s forwards;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-top: 2.5rem;
+            padding: 0.85rem 2rem;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            animation: fadeUp 0.7s 1.2s forwards;
+        }
+
+        .hero-cta::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--accent);
+            transform: translateX(-100%);
+            transition: transform 0.3s;
+        }
+
+        .hero-cta:hover::before { transform: translateX(0); }
+        .hero-cta:hover { color: var(--bg); }
+        .hero-cta span { position: relative; z-index: 1; }
+
+        /* ── SECTION BASE ── */
+        section { padding: 5rem 2rem; }
+
+        .section-header {
+            max-width: 960px;
+            margin: 0 auto 3rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .section-number {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--accent);
+            letter-spacing: 0.2em;
+            white-space: nowrap;
+        }
+
+        .section-line {
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .section-title {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #fff;
+        }
+
+        /* ── ABOUT ── */
+        #about { background: var(--bg2); }
+
+        .about-grid {
+            max-width: 960px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .about-text p {
+            color: var(--text);
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 1.2rem;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+        }
+
+        .stat {
+            background: var(--panel);
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .stat-num {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 2rem;
+            color: var(--accent);
+            display: block;
+            text-shadow: var(--glow);
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-top: 0.3rem;
+        }
+
+        .skills-row {
+            margin-top: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.7rem;
+            padding: 0.35rem 0.75rem;
+            border: 1px solid var(--border);
+            color: var(--text-dim);
+            letter-spacing: 0.1em;
+            transition: all 0.2s;
+        }
+
+        .skill-tag:hover {
+            border-color: var(--accent2);
+            color: var(--accent2);
+            text-shadow: var(--glow2);
+        }
+
+        /* ── PROJECTS ── */
+        #projects { background: var(--bg); }
+
+        .projects-grid {
+            max-width: 960px;
+            margin: 0 auto;
+            display: grid;
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+        }
+
+        .project-card {
+            background: var(--panel);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 260px;
+            transition: background 0.3s;
+            text-decoration: none;
+        }
+
+        .project-card:nth-child(even) { direction: rtl; }
+        .project-card:nth-child(even) > * { direction: ltr; }
+
+        .project-card:hover { background: var(--bg3); }
+
+        .project-img {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-img img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            filter: grayscale(60%) brightness(0.7);
+            transition: filter 0.4s, transform 0.4s;
+        }
+
+        .project-card:hover .project-img img {
+            filter: grayscale(0%) brightness(0.85);
+            transform: scale(1.04);
+        }
+
+        .project-img::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0,212,255,0.08), transparent);
+        }
+
+        .project-info {
+            padding: 2rem 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-left: 1px solid var(--border);
+        }
+
+        .project-card:nth-child(even) .project-info {
+            border-left: none;
+            border-right: 1px solid var(--border);
+        }
+
+        .project-index {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.65rem;
+            color: var(--accent);
+            letter-spacing: 0.2em;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-title {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-desc {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            flex: 1;
+        }
+
+        .project-footer {
+            margin-top: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .project-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+
+        .tag {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.62rem;
+            padding: 0.2rem 0.5rem;
+            background: rgba(0,212,255,0.08);
+            border: 1px solid rgba(0,212,255,0.2);
+            color: var(--accent);
+            letter-spacing: 0.08em;
+        }
+
+        .project-link {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--accent2);
+            letter-spacing: 0.15em;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: text-shadow 0.2s;
+        }
+
+        .project-link:hover { text-shadow: var(--glow2); }
+
+        /* ── CONTACT ── */
+        #contact {
+            background: var(--bg2);
+            border-top: 1px solid var(--border);
+        }
+
+        .contact-inner {
+            max-width: 960px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .contact-text h2 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #fff;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .contact-text p { color: var(--text-dim); font-size: 1.05rem; line-height: 1.7; }
+
+        .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem 1.5rem;
+            border: 1px solid var(--border);
+            background: var(--panel);
+            color: var(--text);
+            text-decoration: none;
+            font-size: 1rem;
+            letter-spacing: 0.05em;
+            transition: all 0.25s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-link::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 3px;
+            background: var(--accent);
+            transform: scaleY(0);
+            transition: transform 0.25s;
+        }
+
+        .contact-link:hover { border-color: var(--accent); color: #fff; background: rgba(0,212,255,0.04); }
+        .contact-link:hover::before { transform: scaleY(1); }
+
+        .contact-link-label {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.65rem;
+            color: var(--accent);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--text-faint);
+            letter-spacing: 0.1em;
+        }
+
+        footer a { color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+        footer a:hover { color: var(--accent); }
+        .footer-links { display: flex; gap: 2rem; }
+
+        /* ── ANIMATIONS ── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── TERMINAL CURSOR ── */
+        .cursor::after {
+            content: '_';
+            animation: blink 1s step-end infinite;
+            color: var(--accent);
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        /* ── SCROLL REVEAL ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            .about-grid { grid-template-columns: 1fr; }
+            .project-card { grid-template-columns: 1fr; min-height: auto; }
+            .project-card:nth-child(even) { direction: ltr; }
+            .project-img { height: 180px; }
+            .project-info { border-left: none !important; border-right: none !important; border-top: 1px solid var(--border); }
+            .contact-inner { grid-template-columns: 1fr; gap: 2rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <div class="nav-logo">TVS // PORTFOLIO</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section id="hero">
+        <div class="hero-content">
+            <div class="hero-tag">// Portfolio — 2025</div>
+            <h1 class="hero-name">
+                Thijs<span>van Slooten</span>
+            </h1>
+            <div class="hero-subtitle">Game Programmer &amp; Developer<span class="cursor"></span></div>
+            <p class="hero-desc">
+                I love finding out how things work and how they're made.
+                Games have always been my biggest passion — so I learned to build them.
+            </p>
+            <a href="#projects" class="hero-cta">
+                <span>View Projects</span>
+                <span>↓</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <div class="section-header reveal">
+            <span class="section-number">// 01</span>
+            <div class="section-line"></div>
+        </div>
+        <div class="about-grid">
+            <div class="about-text reveal">
+                <h2 class="section-title" style="margin-bottom:1.5rem">About Me</h2>
+                <p>Hi, I'm Thijs — a 19-year-old developer with a love for game programming. From the moment I started coding, I knew this was what I wanted to do.</p>
+                <p>I enjoy digging deep into how engines work under the hood, building things from scratch, and constantly learning new technologies.</p>
+                <div class="skills-row">
+                    <span class="skill-tag">Unity</span>
+                    <span class="skill-tag">C#</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">P5.js</span>
+                    <span class="skill-tag">HTML/CSS</span>
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">Linux</span>
+                    <span class="skill-tag">Game Dev</span>
+                </div>
+            </div>
+            <div class="about-stats reveal">
+                <div class="stat"><span class="stat-num">6+</span><div class="stat-label">Projects</div></div>
+                <div class="stat"><span class="stat-num">3+</span><div class="stat-label">Years coding</div></div>
+                <div class="stat"><span class="stat-num">2</span><div class="stat-label">Languages</div></div>
+                <div class="stat"><span class="stat-num">∞</span><div class="stat-label">Curiosity</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+        <div class="section-header reveal">
+            <span class="section-number">// 02</span>
+            <div class="section-line"></div>
+        </div>
+        <div class="projects-grid reveal">
+
+            <a href="sub html/project1.html" class="project-card">
+                <div class="project-img">
+                    <img src="img/mythe.png" alt="Project Mythe">
+                </div>
+                <div class="project-info">
+                    <div>
+                        <div class="project-index">PROJECT_01</div>
+                        <div class="project-title">Mythe</div>
+                        <p class="project-desc">A group project based on the myth of Atlantis. We designed and built a full game experience around the lore, combining exploration with underwater mechanics.</p>
+                    </div>
+                    <div class="project-footer">
+                        <div class="project-tags">
+                            <span class="tag">Unity</span>
+                            <span class="tag">C#</span>
+                        </div>
+                        <span class="project-link">View →</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="sub html/project2.html" class="project-card">
+                <div class="project-img">
+                    <img src="img/VecticalSlice.png" alt="Vertical Slice">
+                </div>
+                <div class="project-info">
+                    <div>
+                        <div class="project-index">PROJECT_02</div>
+                        <div class="project-title">Vertical Slice</div>
+                        <p class="project-desc">Recreating Rayman 3D from only a few seconds of footage. A technical exercise in reverse-engineering game design decisions and implementing them faithfully.</p>
+                    </div>
+                    <div class="project-footer">
+                        <div class="project-tags">
+                            <span class="tag">Unity</span>
+                            <span class="tag">C#</span>
+                        </div>
+                        <span class="project-link">View →</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="sub html/project3.html" class="project-card">
+                <div class="project-img">
+                    <img src="img/ProjectSpace.png" alt="Project Space">
+                </div>
+                <div class="project-info">
+                    <div>
+                        <div class="project-index">PROJECT_03</div>
+                        <div class="project-title">Project Space</div>
+                        <p class="project-desc">A Metroidvania-style game set in space. My first major project, focused on non-linear exploration, progression systems, and atmosphere-driven level design.</p>
+                    </div>
+                    <div class="project-footer">
+                        <div class="project-tags">
+                            <span class="tag">Unity</span>
+                            <span class="tag">C#</span>
+                        </div>
+                        <span class="project-link">View →</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="sub html/project4.html" class="project-card">
+                <div class="project-img">
+                    <img src="img/Wolfenstein3D.png" alt="Wolfenstein 3D Renderer">
+                </div>
+                <div class="project-info">
+                    <div>
+                        <div class="project-index">PROJECT_04</div>
+                        <div class="project-title">Project 3D</div>
+                        <p class="project-desc">A raycasting renderer built from scratch in JavaScript, recreating the core rendering technique behind Wolfenstein 3D. Pure math — no 3D library.</p>
+                    </div>
+                    <div class="project-footer">
+                        <div class="project-tags">
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">P5.js</span>
+                        </div>
+                        <span class="project-link">View →</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="sub html/project5.html" class="project-card">
+                <div class="project-img">
+                    <img src="img/VerletPhysicsEngine.png" alt="Verlet Physics Engine">
+                </div>
+                <div class="project-info">
+                    <div>
+                        <div class="project-index">PROJECT_05</div>
+                        <div class="project-title">Verlet Physics</div>
+                        <p class="project-desc">A custom Verlet integration physics engine written in JavaScript. Built to understand constraint-based simulation and cloth/rope dynamics from first principles.</p>
+                    </div>
+                    <div class="project-footer">
+                        <div class="project-tags">
+                            <span class="tag">JavaScript</span>
+                        </div>
+                        <span class="project-link">View →</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="sub html/project6.html" class="project-card">
+                <div class="project-img">
+                    <img src="img/minecraft_clone_tn.png" alt="Minecraft Clone">
+                </div>
+                <div class="project-info">
+                    <div>
+                        <div class="project-index">PROJECT_06</div>
+                        <div class="project-title">Minecraft Clone</div>
+                        <p class="project-desc">An ongoing attempt at recreating Minecraft to understand voxel engine architecture — chunk generation, mesh building, and procedural terrain. Still in development.</p>
+                    </div>
+                    <div class="project-footer">
+                        <div class="project-tags">
+                            <span class="tag">Unity</span>
+                            <span class="tag">C#</span>
+                        </div>
+                        <span class="project-link">View →</span>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="section-header reveal">
+            <span class="section-number">// 03</span>
+            <div class="section-line"></div>
+        </div>
+        <div class="contact-inner">
+            <div class="contact-text reveal">
+                <h2>Let's Work<br>Together</h2>
+                <p>Have a project in mind or just want to get in touch? I'm always open to new opportunities and interesting conversations.</p>
+            </div>
+            <div class="contact-links reveal">
+                <a href="mailto:thijsvsl@gmail.com" class="contact-link">
+                    <div>
+                        <span class="contact-link-label">Email</span>
+                        thijsvsl@gmail.com
+                    </div>
+                </a>
+                <a href="tel:0615102000" class="contact-link">
+                    <div>
+                        <span class="contact-link-label">Phone</span>
+                        06 15 10 20 00
+                    </div>
+                </a>
+                <a href="https://www.linkedin.com/in/thijs-van-slooten-682049185/" target="_blank" class="contact-link">
+                    <div>
+                        <span class="contact-link-label">LinkedIn</span>
+                        thijs-van-slooten
+                    </div>
+                </a>
+                <a href="https://github.com/DSBxASSASSIN" target="_blank" class="contact-link">
+                    <div>
+                        <span class="contact-link-label">GitHub</span>
+                        DSBxASSASSIN
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <span>© 2025 Thijs van Slooten</span>
+        <div class="footer-links">
+            <a href="https://github.com/DSBxASSASSIN" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/thijs-van-slooten-682049185/" target="_blank">LinkedIn</a>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
 </html>
